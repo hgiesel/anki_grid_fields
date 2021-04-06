@@ -9,11 +9,7 @@ def show_grid(js, note, editor):
     grid_areas.model = note.model()
     value = grid_areas.value
 
-    return f"{js}; " + (
-        "gridFields.setDefaultColumnGrids(); "
-        if len(value) == 0
-        else f"gridFields.setCustomAreas(`{value}`); "
-    )
+    return f"{js}; gridFields.setCustomAreas(`{value}`); "
 
 
 def init_editor():

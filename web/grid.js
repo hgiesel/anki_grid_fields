@@ -3,24 +3,36 @@ var gridFields = new class {
         this.style = document.createElement("style");
 
         document.head.appendChild(this.style);
+
+        document.addEventListener("keydown", (event) => {
+            if (event.code === "F10") {
+                if (this.defaultGrids) {
+                    bridgeCommand("getGridAreas", this.setCustomAreas.bind(this));
+                }
+                else {
+                    this.setDefaultColumnGrids();
+                }
+            }
+        })
     }
 
     setDefaultColumnGrids() {
         const fields = document.getElementById("fields");
 
+        this.defaultGrids = true;
         this.style.textContent = `
-@media (max-width: 300px) {
+@media (max-width: 350px) {
   #fields {
-    grid-template-columns: 1fr;
+    grid-template-columns: 100%;
   }
 }
 `
 
         if (fields.childElementCount >= 2) {
             this.style.textContent += `
-@media (min-width: 300px) {
+@media (min-width: 350px) {
   #fields {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 49.5% 49.5%;
   }
 }
 `
@@ -30,7 +42,7 @@ var gridFields = new class {
             this.style.textContent += `
 @media (min-width: 700px) {
   #fields {
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 33% 33% 33%;
   }
 }
 `
@@ -57,6 +69,11 @@ ${formatted};
     }
 
     setCustomAreas(areas) {
+        if (!areas) {
+            this.setDefaultColumnGrids();
+            return;
+        }
+
         let css = "";
 
         forEditorField([], (field) => {
@@ -65,6 +82,7 @@ ${formatted};
 
         css += this.areasToCss(areas);
 
+        this.defaultGrids = false;
         this.style.textContent = css;
     }
 }
