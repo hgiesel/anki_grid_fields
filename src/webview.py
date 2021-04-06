@@ -16,6 +16,7 @@ def number_to_field_name_css(fieldno: int) -> str:
 }}
 """
 
+
 def load_grid_js(webcontent, context):
     if not isinstance(context, Editor):
         return

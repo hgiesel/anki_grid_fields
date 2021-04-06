@@ -1,6 +1,6 @@
 #fields {
     display: grid;
-    grid-column-gap: 0.3rem;
+    grid-column-gap: 0.4rem;
 }
 
 #fields > * {
