@@ -1,0 +1,13 @@
+#fields {
+    display: grid;
+    grid-column-gap: 0.3rem;
+}
+
+#fields > * {
+    display: flex;
+    flex-flow: column;
+}
+
+.field {
+    flex-grow: 1;
+}
