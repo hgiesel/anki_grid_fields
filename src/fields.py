@@ -7,7 +7,7 @@ from .utils import grid_areas
 
 
 prompt = """
-Set areas in a way you like it.
+Setting grid areas.
 Fields are indexed by "f<n>",  for example "f1" for first field,  or "f2" for second field.
 The following example will make f1 occupy the first row,  f2 and f3 the second and f4 in the bottom row:
 
@@ -17,7 +17,7 @@ f4 f4 f4
 
 Make sure to use *all field identifiers*.  For example,  if you have 5 fields,  you should use f1 to f5.
 Make sure to use the same amount of field identifiers per row.
-Delete everything to go back to auto columns.
+Delete everything for grid columns by default.
 """.strip()
 
 
