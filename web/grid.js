@@ -93,7 +93,7 @@ var gridFields = new (class {
 
     switch (value) {
       case 0:
-        this.setDefaultColumnGrids();
+        bridgeCommand("getGridAreas", this.setCustomAreas.bind(this));
         break;
       default:
         this.style.textContent = this.getFieldsTemplateColumnsCss(value);
