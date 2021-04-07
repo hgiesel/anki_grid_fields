@@ -3,16 +3,6 @@ var gridFields = new (class {
     this.style = document.createElement("style");
     this.zoomedField = null;
     document.head.appendChild(this.style);
-
-    document.addEventListener("keydown", (event) => {
-      if (event.code === "F10") {
-        if (event.shiftKey) {
-          this.toggleFieldZoom();
-        } else {
-          this.toggleGridFieldsMode();
-        }
-      }
-    });
   }
 
   toggleFieldZoom() {
