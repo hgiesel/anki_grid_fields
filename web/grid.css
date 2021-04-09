@@ -6,6 +6,7 @@
 #fields > * {
     display: flex;
     flex-flow: column;
+    min-width: 0;
 }
 
 .field {
