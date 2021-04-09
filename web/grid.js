@@ -112,9 +112,7 @@ var gridFields = new (class {
 
   setColumnGridsEvent(event) {
     const value = Number(event.currentTarget.value);
-    console.log(value);
     this.setColumnGrids(value);
-    console.log(this.style.textContent);
   }
 
   numberToGridArea(n) {
