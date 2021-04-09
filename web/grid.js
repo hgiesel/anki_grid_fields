@@ -5,6 +5,19 @@ var gridFields = new (class {
     document.head.appendChild(this.style);
   }
 
+  relayEditingAreaClicksToEditable() {
+    forEditorField([], (field) => {
+      if (!field.hasAttribute("has-click-relayed")) {
+        field.editingArea.addEventListener("click", () => {
+          field.editingArea.editable.focus({ preventScroll: true });
+          document.execCommand("selectAll", false, null);
+          document.getSelection().collapseToEnd();
+        });
+        field.setAttribute("has-click-relayed", "");
+      }
+    });
+  }
+
   toggleFieldZoom() {
     const field = getCurrentField();
 
