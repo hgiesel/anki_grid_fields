@@ -22,7 +22,10 @@ var gridFields = new (class {
     const field = getCurrentField();
 
     if (typeof this.zoomedField === "number") {
-      getEditorField(this.zoomedField).style.gridColumn = "";
+      const oldEditorField = getEditorField(this.zoomedField);
+      oldEditorField.style.gridColumn = "";
+      oldEditorField.style.zIndex = "";
+      oldEditorField.labelContainer.style.backgroundColor = "";
 
       if (field && this.zoomedField === field.ord) {
         // unzoom
@@ -33,7 +36,11 @@ var gridFields = new (class {
 
     if (field) {
       this.zoomedField = field.ord;
-      getEditorField(this.zoomedField).style.gridColumn = "1 / -1";
+
+      const editorField = getEditorField(this.zoomedField);
+      editorField.style.gridColumn = "1 / -1";
+      editorField.style.zIndex = "1";
+      editorField.labelContainer.style.backgroundColor = "var(--bg-color)";
     }
   }
 

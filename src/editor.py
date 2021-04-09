@@ -19,6 +19,7 @@ def show_grid(js, note, editor):
 def relay_editing_area_clicks_to_editable(editor):
     editor.web.eval("gridFields.relayEditingAreaClicksToEditable(); ")
 
+
 def add_column_number_input(righttopbtns, editor):
     righttopbtns.append(
         """
@@ -26,6 +27,7 @@ def add_column_number_input(righttopbtns, editor):
 <input type="number" tabindex="-1" value="0" min="0" max="9" name="colCount" id="colCount" />
     """
     )
+
 
 def toggle_mode_js(editor):
     editor.web.eval("gridFields.toggleGridFieldsMode(); ")
@@ -39,7 +41,7 @@ def add_grid_fields_shortcuts(cuts, editor):
     cuts.extend(
         [
             (toggle_mode.value, lambda: toggle_mode_js(editor), True),
-            (toggle_zoom.value, lambda: toggle_zoom_js(editor)),
+            (toggle_zoom.value, lambda: toggle_zoom_js(editor), True),
         ]
     )
 
