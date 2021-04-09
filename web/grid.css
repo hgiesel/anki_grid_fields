@@ -11,3 +11,7 @@
 .field {
     flex-grow: 1;
 }
+
+.fname {
+    white-space: nowrap;
+}
