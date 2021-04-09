@@ -39,9 +39,8 @@ var gridFields = new (class {
   }
 
   getFieldsTemplateColumnsCss(n) {
-    const baseValue = 99 / n;
     const templateColumnsValue = Array.apply(0, Array(n))
-      .map((_) => `${baseValue}%`)
+      .map(() => "1fr")
       .join(" ");
 
     return `
@@ -107,15 +106,17 @@ var gridFields = new (class {
   }
 
   areasToCss(areas) {
-    const formatted = areas
-      .split("\n")
-      .map((row) => `"${row}"`)
-      .join("\n");
+    const lines = areas.split("\n").map((row) => row.split(/[ ]+/));
+
+    const templateColumns = lines[0].map(() => "1fr").join(" ");
+
+    const formatted = lines.map((row) => `"${row.join(" ")}"`).join("\n");
 
     return `
 #fields {
 grid-template-areas:
 ${formatted};
+grid-template-columns: ${templateColumns};
 }
 `;
   }
