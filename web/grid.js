@@ -9,9 +9,11 @@ var gridFields = new (class {
     forEditorField([], (field) => {
       if (!field.hasAttribute("has-click-relayed")) {
         field.editingArea.addEventListener("click", () => {
-          field.editingArea.editable.focus({ preventScroll: true });
-          document.execCommand("selectAll", false, null);
-          document.getSelection().collapseToEnd();
+            if (!field.editingArea.contains(document.activeElement)) {
+                field.editingArea.editable.focus({ preventScroll: true });
+                document.execCommand("selectAll", false, null);
+                document.getSelection().collapseToEnd();
+            }
         });
         field.setAttribute("has-click-relayed", "");
       }
